@@ -7,7 +7,7 @@ Tiny utility for parsing CSV files.
 -   written in TypeScript
 
 ```
-npm i csvts
+npm i @vojtatom/csvts
 ```
 
 ## Usage
