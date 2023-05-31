@@ -59,7 +59,7 @@ function detectDelimiter(line: string): string {
 }
 
 export function parse(csv: string, delimiter?: string) {
-    const lines = csv.split('\n');
+    const lines = csv.split('\n'); //TODO bug here when the newlines are inside quotes
     if (!delimiter) delimiter = detectDelimiter(lines[0]);
 
     const data: string[][] = [];
