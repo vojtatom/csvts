@@ -3,11 +3,12 @@
 Tiny utility for parsing CSV files.
 
 -   dead simple, just a few lines of code
+-   needs the entire CSV in memory
 -   no dependencies
 -   written in TypeScript
 
 ```
-npm i csvts
+npm i @vojtatom/csvts
 ```
 
 ## Usage
@@ -22,6 +23,6 @@ const data = [
     ['3', 'Back, "Jim"', '50', '"100.5"', 'true', '3', '2021-01-03T00:00:00.000Z'],
 ];
 
-const csv = stringify(csvData);
-const originalData = parse(csv);
+const csvString = stringify(csvData);
+const originalData = parse(csvString);
 ```

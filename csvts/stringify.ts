@@ -1,14 +1,17 @@
+import { possibleDelimiters } from './parse';
+
 export function stringify(data: any[][], delimiter = ',') {
     const csv = data
         .map((line) =>
             line
                 .map((term) => {
                     const stringTerm = String(term).replaceAll('"', '""');
-                    if (stringTerm.includes(delimiter)) {
-                        return `"${stringTerm}"`;
-                    } else {
-                        return stringTerm;
+                    for (const possibleDelimiter of possibleDelimiters) {
+                        if (stringTerm.includes(possibleDelimiter) || stringTerm.includes('\n')) {
+                            return `"${stringTerm}"`;
+                        }
                     }
+                    return stringTerm;
                 })
                 .join(delimiter)
         )
