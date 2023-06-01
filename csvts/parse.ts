@@ -1,7 +1,7 @@
-function splitLine(line: string, delimiter: string) {
-    let values: string[] = [];
-    const lineParsed: string[] = [];
+export const possibleDelimiters = [',', ';', '\t', '|', '-'];
 
+function split(line: string, delimiter: string, replaceQuotes = false) {
+    const terms: string[] = [];
     let term = '';
     let inQuotes = false;
     let quoteSymbol = '';
@@ -11,64 +11,62 @@ function splitLine(line: string, delimiter: string) {
 
         if (c === '"') {
             if (line[i + 1] === '"') {
-                //replace with quotes and go on, nothign changes
-                term += '"';
+                //deal with double quotes
+                if (replaceQuotes) term += '"';
+                else term += '""';
                 i++;
             } else {
                 if (inQuotes && quoteSymbol === '"') {
+                    //end in quotes
                     inQuotes = false;
                 } else {
+                    //start in quotes
                     inQuotes = true;
                     quoteSymbol = '"';
                 }
+                if (!replaceQuotes) term += '"';
             }
         } else if (c === "'") {
             if (inQuotes && quoteSymbol === "'") {
+                //end in quotes
                 inQuotes = false;
             } else {
+                //start in quotes
                 inQuotes = true;
                 quoteSymbol = "'";
             }
+            if (!replaceQuotes) term += "'";
         } else if (c === delimiter && !inQuotes) {
-            lineParsed.push(term);
+            //end of term
+            terms.push(term);
             term = '';
         } else {
+            //extend term
             term += c;
         }
     }
 
-    lineParsed.push(term);
-    return lineParsed;
+    terms.push(term);
+    return terms;
 }
 
 function detectDelimiter(line: string): string {
-    const possibleDelimiters = [',', ';', '\t', '|', '-'];
-    let maxCount = 0;
-    let detectedDelimiter = ',';
-
+    let maxCount = 0,
+        detectedDelimiter = ',';
     possibleDelimiters.forEach((delimiter) => {
-        const count = line.split(delimiter).length - 1;
-
-        if (count > maxCount) {
-            maxCount = count;
-            detectedDelimiter = delimiter;
-        }
+        const count = split(line, delimiter).length - 1;
+        if (count > maxCount) (maxCount = count), (detectedDelimiter = delimiter);
     });
-
     return detectedDelimiter;
 }
 
 export function parse(csv: string, delimiter?: string) {
-    const lines = csv.split('\n'); //TODO bug here when the newlines are inside quotes
-    if (!delimiter) delimiter = detectDelimiter(lines[0]);
-
     const data: string[][] = [];
+    const lines = split(csv, '\n');
 
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        if (line === '') continue;
-        data.push(splitLine(line, delimiter));
-    }
-
+    if (!delimiter) delimiter = detectDelimiter(lines[0]);
+    lines.forEach((line) => {
+        data.push(split(line, delimiter!, true));
+    });
     return data;
 }
