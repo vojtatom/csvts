@@ -1,4 +1,4 @@
-# CSV.ts 📄
+# csv.ts 📄
 
 Tiny utility for parsing CSV files.
 
