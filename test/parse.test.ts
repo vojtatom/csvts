@@ -1,4 +1,4 @@
-import { parse, stringify } from '@tablests/tables';
+import { parse, stringify } from '@tablests/tablests';
 import { expect, test } from 'vitest';
 
 test('Basic test', async () => {
