@@ -1,4 +1,4 @@
-# csv.ts 📄
+# tables.ts 📄
 
 Tiny utility for parsing CSV files.
 
@@ -8,13 +8,13 @@ Tiny utility for parsing CSV files.
 -   written in TypeScript
 
 ```
-npm i @vojtatom/csvts
+npm i tablests
 ```
 
 ## Usage
 
 ```ts
-import { stringify, parse } from 'csvts';
+import { stringify, parse } from 'tablests';
 
 const data = [
     ['id', 'name', 'age', 'weight', 'married', 'children', 'timestamp'],

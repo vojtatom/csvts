@@ -1,4 +1,4 @@
-import { parse, stringify } from '@csvts/csvts';
+import { parse, stringify } from '@tablests/tables';
 import { expect, test } from 'vitest';
 
 test('Basic test', async () => {

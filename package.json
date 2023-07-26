@@ -1,11 +1,11 @@
 {
-    "name": "@vojtatom/csvts",
+    "name": "tablests",
     "private": false,
     "version": "1.0.0",
     "type": "module",
     "repository": {
         "type": "git",
-        "url": "https://github.com/vojtatom/csv.ts"
+        "url": "https://github.com/vojtatom/tables.ts"
     },
     "keywords": [
         "tables",
@@ -22,13 +22,13 @@
     "files": [
         "dist/**/*"
     ],
-    "main": "./dist/csvts.umd.js",
-    "module": "./dist/csvts.js",
-    "types": "./dist/csvts.d.ts",
+    "main": "./dist/tablests.umd.js",
+    "module": "./dist/tablests.js",
+    "types": "./dist/tablests.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/csvts.js",
-            "require": "./dist/csvts.umd.js"
+            "import": "./dist/tablests.js",
+            "require": "./dist/tablests.umd.js"
         }
     },
     "scripts": {
