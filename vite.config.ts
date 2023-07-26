@@ -6,7 +6,7 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
     build: {
         lib: {
-            entry: resolve(__dirname, 'tablests/tables.ts'),
+            entry: resolve(__dirname, 'tablests/tablests.ts'),
             name: 'tablests',
             // the proper extensions will be added
             fileName: 'tablests',
