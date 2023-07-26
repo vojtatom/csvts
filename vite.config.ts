@@ -6,15 +6,15 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
     build: {
         lib: {
-            entry: resolve(__dirname, 'csvts/csvts.ts'),
-            name: 'csvts',
+            entry: resolve(__dirname, 'tablests/tables.ts'),
+            name: 'tablests',
             // the proper extensions will be added
-            fileName: 'csvts',
+            fileName: 'tablests',
         },
     },
     resolve: {
         alias: {
-            '@csvts': resolve(__dirname, './csvts'),
+            '@tablests': resolve(__dirname, './tablests'),
         },
     },
     plugins: [dts()],

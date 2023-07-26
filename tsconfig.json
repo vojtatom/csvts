@@ -15,12 +15,12 @@
       "isolatedModules": true,
       "noEmit": true,
       "jsx": "react-jsx",
-      "baseUrl": "./csvts",
+      "baseUrl": "./tablests",
       "paths": {
-        "@csvts/*": ["./*"],
+        "@tablests/*": ["./*"],
         
       }
     },
-    "include": ["test", "csvts"],
+    "include": ["test", "tablests"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
